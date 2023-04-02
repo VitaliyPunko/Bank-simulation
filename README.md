@@ -1,6 +1,6 @@
 ## Bank Simulation
 ### Requirements:
-Java (8-17), gradle, Spring Boot, microservices, different databases (NoSQL and SQL),
+Java (17), gradle, Spring Boot, microservices, different databases (NoSQL and SQL),
 Hibernate transaction management, multithreading, high test coverage, add queue, logging,
 two or more servers(prod and test), metrics, docker + kubernetes + aws, Spring Security.
 
