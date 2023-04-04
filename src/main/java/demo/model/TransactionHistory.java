@@ -22,6 +22,14 @@ public class TransactionHistory {
     @Column(name = "sum")
     private BigDecimal sum;
 
+    @OneToOne
+    @JoinColumn(name = "bank_account_sender_id")
+    private BankAccount bankAccountSender;
+
+    @OneToOne
+    @JoinColumn(name = "bank_account_receiver_id")
+    private BankAccount bankAccountReceiver;
+
     public Integer getId() {
         return id;
     }
@@ -44,6 +52,22 @@ public class TransactionHistory {
 
     public void setSum(BigDecimal sum) {
         this.sum = sum;
+    }
+
+    public BankAccount getBankAccountSender() {
+        return bankAccountSender;
+    }
+
+    public void setBankAccountSender(BankAccount bankAccountSender) {
+        this.bankAccountSender = bankAccountSender;
+    }
+
+    public BankAccount getBankAccountReceiver() {
+        return bankAccountReceiver;
+    }
+
+    public void setBankAccountReceiver(BankAccount bankAccountReceiver) {
+        this.bankAccountReceiver = bankAccountReceiver;
     }
 
     @Override

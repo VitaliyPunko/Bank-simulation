@@ -3,6 +3,8 @@ package demo.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -29,6 +31,43 @@ public class Client {
 
     @Column(name = "registration")
     private String registration;
+
+    public Client() {
+    }
+
+    public Client(String lastName,
+                  String firstName,
+                  LocalDate yearOfBirth,
+                  String citizenship,
+                  String registration) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.yearOfBirth = yearOfBirth;
+        this.citizenship = citizenship;
+        this.registration = registration;
+    }
+
+    @OneToMany(mappedBy = "client")
+    private List<BankAccount> bankAccounts;
+
+    @OneToMany( mappedBy = "client")
+    private List<BankCard> bankCards;
+
+    public void addBankAccountToClient(BankAccount bankAccount) {
+        if (bankAccounts == null) {
+            bankAccounts = new ArrayList<>();
+        }
+        bankAccount.setClient(this);
+        bankAccounts.add(bankAccount);
+    }
+
+    public void addBankCardToClient(BankCard bankCard) {
+        if (bankCards == null) {
+            bankCards = new ArrayList<>();
+        }
+        bankCard.setClient(this);
+        bankCards.add(bankCard);
+    }
 
     public Integer getId() {
         return id;
@@ -76,6 +115,14 @@ public class Client {
 
     public void setRegistration(String registration) {
         this.registration = registration;
+    }
+
+    public List<BankAccount> getBankAccounts() {
+        return bankAccounts;
+    }
+
+    public void setBankAccounts(List<BankAccount> bankAccounts) {
+        this.bankAccounts = bankAccounts;
     }
 
     @Override

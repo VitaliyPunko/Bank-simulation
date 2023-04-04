@@ -24,6 +24,14 @@ public class BankCard {
     @Column(name = "close_date")
     private LocalDate closeDate;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+    @OneToOne
+    @JoinColumn(name = "bank_account_id")
+    private BankAccount bankAccount;
+
     public Integer getId() {
         return id;
     }
@@ -54,6 +62,22 @@ public class BankCard {
 
     public void setCloseDate(LocalDate closeDate) {
         this.closeDate = closeDate;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public BankAccount getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
     }
 
     @Override

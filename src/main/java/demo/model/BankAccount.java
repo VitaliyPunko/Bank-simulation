@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -27,6 +28,13 @@ public class BankAccount {
 
     @Column(name = "close_date")
     private LocalDateTime closeDate;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+    @OneToOne(mappedBy = "bankAccount")
+    private BankCard bankCard;
 
     public Integer getId() {
         return id;
@@ -66,6 +74,22 @@ public class BankAccount {
 
     public void setCloseDate(LocalDateTime closeDate) {
         this.closeDate = closeDate;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public BankCard getBankCard() {
+        return bankCard;
+    }
+
+    public void setBankCard(BankCard bankCard) {
+        this.bankCard = bankCard;
     }
 
     @Override
