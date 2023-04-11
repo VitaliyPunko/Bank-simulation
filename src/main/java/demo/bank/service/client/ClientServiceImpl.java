@@ -7,6 +7,8 @@ import demo.bank.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ClientServiceImpl implements ClientService {
 
@@ -22,8 +24,20 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void createClient(ClientDto clientDto) {
+    public ClientDto findById(Integer id) {
+        Optional<Client> optionalClient = clientRepository.findById(id);
+        return optionalClient.map(clientMapper::toDto).orElse(null);
+    }
+
+    @Override
+    public ClientDto createClient(ClientDto clientDto) {
         Client client = clientMapper.toEntity(clientDto);
-        clientRepository.save(client);
+        Client saved = clientRepository.save(client);
+        return clientMapper.toDto(saved);
+    }
+
+    @Override
+    public void deleteClientById(Integer id) {
+        clientRepository.deleteById(id);
     }
 }
