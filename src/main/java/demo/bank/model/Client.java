@@ -1,4 +1,4 @@
-package demo.model;
+package demo.bank.model;
 
 import jakarta.persistence.*;
 
@@ -14,7 +14,7 @@ public class Client {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bank_client_generator")
-    @SequenceGenerator(name="bank_client_generator", sequenceName = "bank_clients_seq", allocationSize = 1)
+    @SequenceGenerator(name = "bank_client_generator", sequenceName = "bank.bank_clients_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "last_name")
@@ -32,6 +32,12 @@ public class Client {
     @Column(name = "registration")
     private String registration;
 
+    @OneToMany(mappedBy = "client")
+    private List<BankAccount> bankAccounts;
+
+    @OneToMany(mappedBy = "client")
+    private List<BankCard> bankCards;
+
     public Client() {
     }
 
@@ -47,11 +53,6 @@ public class Client {
         this.registration = registration;
     }
 
-    @OneToMany(mappedBy = "client")
-    private List<BankAccount> bankAccounts;
-
-    @OneToMany( mappedBy = "client")
-    private List<BankCard> bankCards;
 
     public void addBankAccountToClient(BankAccount bankAccount) {
         if (bankAccounts == null) {
@@ -123,6 +124,14 @@ public class Client {
 
     public void setBankAccounts(List<BankAccount> bankAccounts) {
         this.bankAccounts = bankAccounts;
+    }
+
+    public List<BankCard> getBankCards() {
+        return bankCards;
+    }
+
+    public void setBankCards(List<BankCard> bankCards) {
+        this.bankCards = bankCards;
     }
 
     @Override

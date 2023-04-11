@@ -1,4 +1,4 @@
-package demo.model;
+package demo.bank.model;
 
 import jakarta.persistence.*;
 

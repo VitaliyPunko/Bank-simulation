@@ -1,6 +1,6 @@
-package demo.dao;
+package demo.bank.dao;
 
-import demo.model.Client;
+import demo.bank.model.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

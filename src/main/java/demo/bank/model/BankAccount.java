@@ -1,10 +1,9 @@
-package demo.model;
+package demo.bank.model;
 
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
