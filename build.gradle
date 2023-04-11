@@ -3,17 +3,19 @@ plugins {
     id 'org.springframework.boot' version '3.0.5'
 }
 
-apply plugin: 'io.spring.dependency-management'
+allprojects{
+    repositories {
+        mavenCentral()
+    }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-}
-
-repositories {
-    mavenCentral()
+    group 'demo.bank'
+    version '1.0-SNAPSHOT'
+    apply plugin: 'java'
 }
 
 dependencies {
+    implementation project(':commons')
+
     implementation platform('org.springframework.boot:spring-boot-dependencies:3.0.5')
 
     implementation 'org.springframework.boot:spring-boot-starter'
@@ -24,11 +26,17 @@ dependencies {
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.6.0'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '3.0.5'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '3.0.5'
+
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    annotationProcessor('org.mapstruct:mapstruct-processor:1.5.3.Final')  //to create mapstruct bean
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
 }
 
 test {
     useJUnitPlatform()
 }
-
-group 'org.example'
-version '1.0-SNAPSHOT'
