@@ -1,9 +1,21 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.liquibase:liquibase-gradle-plugin:2.2.0"
+    }
+}
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.0.5'
+    id 'org.liquibase.gradle' version '2.2.0'
 }
 
-allprojects{
+allprojects {
     repositories {
         mavenCentral()
     }
@@ -29,9 +41,33 @@ dependencies {
 
     implementation 'org.mapstruct:mapstruct:1.5.3.Final'
     annotationProcessor('org.mapstruct:mapstruct-processor:1.5.3.Final')  //to create mapstruct bean
+
+    implementation 'org.liquibase:liquibase-core:4.21.0'
+
+    liquibaseRuntime('org.liquibase:liquibase-core:4.21.0')
+    liquibaseRuntime 'info.picocli:picocli:4.7.1'
+    liquibaseRuntime 'org.liquibase:liquibase-groovy-dsl:3.0.3'
+    liquibaseRuntime("org.postgresql:postgresql")
+
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: "org.liquibase.gradle"
+
+liquibase {
+    activities {
+        main {
+            changelogFile "src/main/resources/db/changelog/db.changelog-master.xml"
+            url "jdbc:postgresql://localhost:5432/postgres"
+            username "postgres"
+            password "postgres"
+            defaultSchemaName 'bank'
+            liquibaseSchemaName 'bank'
+        }
+    }
+}
+
+build.dependsOn update
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
