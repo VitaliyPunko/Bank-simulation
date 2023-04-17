@@ -13,7 +13,7 @@ public class TransactionHistory {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bank_transactions_history_generator")
-    @SequenceGenerator(name="bank_transactions_history_generator", sequenceName = "bank_transactions_history_seq", allocationSize = 1)
+    @SequenceGenerator(name = "bank_transactions_history_generator", sequenceName = "bank.bank_transactions_history_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "transaction_time")

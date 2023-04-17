@@ -12,7 +12,7 @@ public class BankCard {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bank_cards_generator")
-    @SequenceGenerator(name="bank_cards_generator", sequenceName = "bank_cards_seq", allocationSize = 1)
+    @SequenceGenerator(name = "bank_cards_generator", sequenceName = "bank.bank_cards_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "bank_card_number")
