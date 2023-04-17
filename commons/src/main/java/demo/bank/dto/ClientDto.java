@@ -15,8 +15,8 @@ public class ClientDto {
     private String citizenship;
     private String registration;
 
-    private List<BankAccountDto> bankAccountDtos;
-    private List<BankCardDto> bankCardDtos;
+    private List<BankAccountDto> bankAccount;
+    private List<BankCardDto> bankCard;
 
     public ClientDto() {
     }
@@ -34,19 +34,19 @@ public class ClientDto {
     }
 
     public void addBankAccountToClient(BankAccountDto bankAccount) {
-        if (bankAccountDtos == null) {
-            bankAccountDtos = new ArrayList<>();
+        if (this.bankAccount == null) {
+            this.bankAccount = new ArrayList<>();
         }
-        bankAccount.setClientDto(this);
-        bankAccountDtos.add(bankAccount);
+        bankAccount.setClient(this);
+        this.bankAccount.add(bankAccount);
     }
 
     public void addBankCardToClient(BankCardDto bankCardDto) {
-        if (bankCardDtos == null) {
-            bankCardDtos = new ArrayList<>();
+        if (bankCard == null) {
+            bankCard = new ArrayList<>();
         }
         bankCardDto.setClientDto(this);
-        bankCardDtos.add(bankCardDto);
+        bankCard.add(bankCardDto);
     }
 
     public Integer getId() {
@@ -97,20 +97,20 @@ public class ClientDto {
         this.registration = registration;
     }
 
-    public List<BankAccountDto> getBankAccountDtos() {
-        return bankAccountDtos;
+    public List<BankAccountDto> getBankAccount() {
+        return bankAccount;
     }
 
-    public void setBankAccountDtos(List<BankAccountDto> bankAccountDtos) {
-        this.bankAccountDtos = bankAccountDtos;
+    public void setBankAccount(List<BankAccountDto> bankAccount) {
+        this.bankAccount = bankAccount;
     }
 
-    public List<BankCardDto> getBankCardDtos() {
-        return bankCardDtos;
+    public List<BankCardDto> getBankCard() {
+        return bankCard;
     }
 
-    public void setBankCardDtos(List<BankCardDto> bankCardDtos) {
-        this.bankCardDtos = bankCardDtos;
+    public void setBankCard(List<BankCardDto> bankCard) {
+        this.bankCard = bankCard;
     }
 
     @Override

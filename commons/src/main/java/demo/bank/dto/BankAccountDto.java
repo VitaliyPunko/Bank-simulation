@@ -13,8 +13,8 @@ public class BankAccountDto {
     private BigDecimal balance;
     private LocalDateTime openDate;
     private LocalDateTime closeDate;
-    private ClientDto clientDto;
-    private BankCardDto bankCardDto;
+    private ClientDto client;
+    private BankCardDto bankCard;
 
     public Integer getId() {
         return id;
@@ -56,20 +56,20 @@ public class BankAccountDto {
         this.closeDate = closeDate;
     }
 
-    public ClientDto getClientDto() {
-        return clientDto;
+    public ClientDto getClient() {
+        return client;
     }
 
-    public void setClientDto(ClientDto clientDto) {
-        this.clientDto = clientDto;
+    public void setClient(ClientDto client) {
+        this.client = client;
     }
 
-    public BankCardDto getBankCardDto() {
-        return bankCardDto;
+    public BankCardDto getBankCard() {
+        return bankCard;
     }
 
-    public void setBankCardDto(BankCardDto bankCardDto) {
-        this.bankCardDto = bankCardDto;
+    public void setBankCard(BankCardDto bankCard) {
+        this.bankCard = bankCard;
     }
 
     @Override
