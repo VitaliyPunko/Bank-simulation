@@ -67,7 +67,8 @@ liquibase {
     }
 }
 
-build.dependsOn update
+//команда запускает liquibase update во время gradle build. Перенес запуск скриптов в SpringBoot
+//build.dependsOn update
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
