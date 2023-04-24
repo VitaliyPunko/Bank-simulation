@@ -4,5 +4,9 @@ import demo.bank.dto.BankAccountDto;
 
 public interface BankAccountService {
 
-    BankAccountDto createBankAccount(BankAccountDto bankAccountDto);
+    BankAccountDto findBankAccountById(Integer accountId);
+
+    BankAccountDto createOrUpdateBankAccount(BankAccountDto bankAccountDto);
+
+    String closeBankAccount(Integer accountId);
 }
