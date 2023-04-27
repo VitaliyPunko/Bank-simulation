@@ -130,4 +130,16 @@ public class ClientDto {
     public int hashCode() {
         return Objects.hash(id, lastName, firstName, yearOfBirth, citizenship, registration);
     }
+
+    @Override
+    public String toString() {
+        return "ClientDto{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", yearOfBirth=" + yearOfBirth +
+                ", citizenship='" + citizenship + '\'' +
+                ", registration='" + registration + '\'' +
+                '}';
+    }
 }
