@@ -2,8 +2,8 @@ package demo.bank.service.payment;
 
 import demo.bank.core.Payment;
 import demo.bank.dto.BankAccountDto;
-import demo.bank.service.TransactionalSaveService.TransactionalSaveService;
 import demo.bank.service.bankaccount.BankAccountService;
+import demo.bank.service.transactionalsaveservice.TransactionalSaveService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,6 @@ public class PaymentServiceImpl implements PaymentService {
         this.bankAccountService = bankAccountService;
     }
 
-    //TODO: использовать паттерн какой-то. Цепочку
     @Override
 //    @Transactional
     public String doPayment(Payment payment) {

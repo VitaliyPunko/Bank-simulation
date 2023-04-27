@@ -1,4 +1,4 @@
-package demo.bank.service.TransactionalSaveService;
+package demo.bank.service.transactionalsaveservice;
 
 import demo.bank.dto.BankAccountDto;
 
