@@ -88,4 +88,16 @@ public class BankAccountDto {
     public int hashCode() {
         return Objects.hash(id, bankAccountNumber, balance, openDate, closeDate);
     }
+
+    @Override
+    public String toString() {
+        return "BankAccountDto{" +
+                "id=" + id +
+                ", bankAccountNumber='" + bankAccountNumber + '\'' +
+                ", balance=" + balance +
+                ", openDate=" + openDate +
+                ", closeDate=" + closeDate +
+                ", client=" + client +
+                '}';
+    }
 }

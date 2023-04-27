@@ -33,6 +33,13 @@ public class BankAccountServiceImpl implements BankAccountService {
     }
 
     @Override
+    public BankAccountDto findBankAccountByNumber(String bankAccountNumber) {
+        //TODO: what happen if number does not exists
+        BankAccount bankAccountByBankAccountNumber = bankAccountRepository.findBankAccountByBankAccountNumber(bankAccountNumber);
+        return bankAccountMapper.toDto(bankAccountByBankAccountNumber);
+    }
+
+    @Override
     public BankAccountDto createOrUpdateBankAccount(BankAccountDto bankAccountDto) {
         BankAccount bankAccount = bankAccountMapper.toEntity(bankAccountDto);
         BankAccount saved = bankAccountRepository.save(bankAccount);

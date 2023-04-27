@@ -6,6 +6,8 @@ public interface BankAccountService {
 
     BankAccountDto findBankAccountById(Integer accountId);
 
+    BankAccountDto findBankAccountByNumber(String bankAccountNumber);
+
     BankAccountDto createOrUpdateBankAccount(BankAccountDto bankAccountDto);
 
     String closeBankAccount(Integer accountId);
